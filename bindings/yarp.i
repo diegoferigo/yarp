@@ -432,6 +432,18 @@ MAKE_COMMS(Bottle)
 %template(SVector) std::vector<std::string>;
 %template(IVector) std::vector<int>;
 
+%extend std::vector<int> {
+    int* data() {
+        return $self->data();
+    }
+}
+
+%extend std::vector<double> {
+    double* data() {
+        return $self->data();
+    }
+}
+
 #ifdef SWIGMATLAB
   // Extend IVector for handling conversion of vectors from and to Matlab
   %include "matlab/vectors_fromTo_matlab.i"
